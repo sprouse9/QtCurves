@@ -85,7 +85,8 @@ QPointF RenderArea::compute(float t)
             return compute_future_curve(t);
             break;
         case Line:
-            return compute_line(t);
+            return QPointF( 1 - t, 1 - t);
+            //return compute_line(t);
             break;
         default:
             break;

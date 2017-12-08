@@ -25,9 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    renderarea.cpp
+    renderarea.cpp \
+    parametriccurve.cpp
 
 HEADERS  += mainwindow.h \
-    renderarea.h
+    renderarea.h \
+    parametriccurve.h
 
 FORMS    += mainwindow.ui
