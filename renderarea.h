@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QColor>
 #include <QPen>
+#include <parametriccurve.h>
 
 class RenderArea : public QWidget
 {
@@ -33,6 +34,8 @@ public:
 
     void setStepCount( int count ) { mStepCount = count; repaint(); }
     int stepCount() const { return mStepCount; }
+
+    ParametricCurve listOfCurves;
 
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;

@@ -185,6 +185,16 @@
      </item>
     </layout>
    </widget>
+   <widget class="QComboBox" name="cboCurveSelect">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>350</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

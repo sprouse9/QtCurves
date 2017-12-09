@@ -10,8 +10,9 @@ using namespace std;
 class ParametricCurve
 {
 public:
-    ParametricCurve( float intervalLen, float scale, int stepcount );
+    ParametricCurve();
     QPointF compute(float t);
+    QStringList getCurveNames();
 public:
     enum ShapeType { Asteroid, Cycloid, HuygensCycloid, HypoCycloid, Line, FutureCurve };
 

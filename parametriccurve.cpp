@@ -1,9 +1,9 @@
 #include "parametriccurve.h"
 
-ParametricCurve::ParametricCurve( float intervalLen, float scale, int stepcount ):
-    mIntervalLength(intervalLen),
-    mScale(scale),
-    mStepCount(stepcount)
+ParametricCurve::ParametricCurve()
+//    mIntervalLength(intervalLen),
+//    mScale(scale),
+//    mStepCount(stepcount)
 {
     //curvefuncPtr = &ParametricCurve::compute_astroid;   // Default curve
     currentCurve = 0;
@@ -12,6 +12,15 @@ ParametricCurve::ParametricCurve( float intervalLen, float scale, int stepcount 
 QPointF ParametricCurve::compute(float t)
 {
     return (this->*curves[currentCurve].curvefuncPtr)(t);
+}
+
+QStringList ParametricCurve::getCurveNames()
+{
+    QStringList list;
+
+    //list << curves[0].mCurveName;
+
+    return list; //QStringList() << curves[0].mCurveName; //<< curves[1].mCurveName<< curves[2].mCurveName<< curves[3].mCurveName<< curves[4].mCurveName<< curves[5].mCurveName;
 }
 
 QPointF ParametricCurve::compute_astroid( float t )

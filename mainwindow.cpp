@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     this->ui->spinScale->setValue( this->ui->renderArea->scale() );
     this->ui->spinInterval->setValue( this->ui->renderArea->intervalLength());
     this->ui->spinCount->setValue( this->ui->renderArea->stepCount() );
+
+    // load the combo box with all possible curves
+    this->ui->cboCurveSelect->addItems(this->ui->renderArea->listOfCurves.getCurveNames());
+
+
+
 }
 
 MainWindow::~MainWindow()
