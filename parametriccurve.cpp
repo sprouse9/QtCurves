@@ -16,11 +16,18 @@ QPointF ParametricCurve::compute(float t)
 
 QStringList ParametricCurve::getCurveNames()
 {
-    QStringList list;
+    //QStringList list;
 
     //list << curves[0].mCurveName;
+    //QString(curves[0].mCurveName);
+    //list.append(QString(curves[0].mCurveName));
 
-    return list; //QStringList() << curves[0].mCurveName; //<< curves[1].mCurveName<< curves[2].mCurveName<< curves[3].mCurveName<< curves[4].mCurveName<< curves[5].mCurveName;
+    return QStringList() << curves[0].mCurveName << curves[1].mCurveName << curves[2].mCurveName<< curves[3].mCurveName<< curves[4].mCurveName<< curves[5].mCurveName;
+}
+
+void ParametricCurve::setCurve(int newcurveindex)
+{
+    currentCurve = newcurveindex;
 }
 
 QPointF ParametricCurve::compute_astroid( float t )

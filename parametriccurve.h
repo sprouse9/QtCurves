@@ -13,6 +13,7 @@ public:
     ParametricCurve();
     QPointF compute(float t);
     QStringList getCurveNames();
+    void setCurve(int);
 public:
     enum ShapeType { Asteroid, Cycloid, HuygensCycloid, HypoCycloid, Line, FutureCurve };
 
@@ -28,7 +29,7 @@ private:
     ShapeType mShape;
 
     struct {
-        string 	mCurveName;
+        QString 	mCurveName;
         float 	mScale;
         float 	mIntervalLength;
         int 	mStepCount;

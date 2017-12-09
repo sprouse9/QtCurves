@@ -108,3 +108,8 @@ void MainWindow::on_btnLineColor_clicked()
         ui->renderArea->repaint();
     }
 }
+
+void MainWindow::on_cboCurveSelect_currentIndexChanged(int index)
+{
+    this->ui->renderArea->listOfCurves.setCurve(index);
+}

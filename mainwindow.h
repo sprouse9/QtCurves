@@ -38,6 +38,8 @@ private slots:
 
     void on_btnLineColor_clicked();
 
+    void on_cboCurveSelect_currentIndexChanged(int index);
+
 private:
     void update_ui();
 private:
