@@ -7,14 +7,12 @@
 RenderArea::RenderArea(QWidget *parent) :
     QWidget(parent),
     mBackgroundColor(0, 0, 255),
-    mPen(Qt::white),
+    mPen(Qt::white)
     //mShape (Astroid),
-    listOfCurves(0)
+    //listOfCurves(0)
 {
     mPen.setWidth(2);
-
-    //on_shape_changed();
-    //listOfCurves.setCurve(0);   // for now default to Asteroid
+    listOfCurves = new ParametricCurve(0);  // for now default to Asteroid
 }
 
 QSize RenderArea::minimumSizeHint() const
@@ -42,19 +40,19 @@ void RenderArea::paintEvent(QPaintEvent *event)
     QPoint center = this->rect().center();
 
     //QPointF prevPoint = compute(0);
-    QPointF prevPoint = listOfCurves.compute(0);
+    QPointF prevPoint = listOfCurves->compute(0);
     QPoint prevPixel;
-    prevPixel.setX( prevPoint.x() * listOfCurves.getScale() + center.x());
-    prevPixel.setY( prevPoint.y() * listOfCurves.getScale() + center.y());
+    prevPixel.setX( prevPoint.x() * listOfCurves->getScale() + center.x());
+    prevPixel.setY( prevPoint.y() * listOfCurves->getScale() + center.y());
 
-    float step = listOfCurves.getIntervalLength() / listOfCurves.getStepCount();
+    float step = listOfCurves->getIntervalLength() / listOfCurves->getStepCount();
 
-    for( float t = 0 ; t < listOfCurves.getIntervalLength() ; t += step ) {
-        QPointF point = listOfCurves.compute(t);
+    for( float t = 0 ; t < listOfCurves->getIntervalLength() ; t += step ) {
+        QPointF point = listOfCurves->compute(t);
 
         QPoint pixel;
-        pixel.setX( point.x() * listOfCurves.getScale() + center.x());
-        pixel.setY( point.y() * listOfCurves.getScale() + center.y());
+        pixel.setX( point.x() * listOfCurves->getScale() + center.x());
+        pixel.setY( point.y() * listOfCurves->getScale() + center.y());
 
         painter.drawLine(pixel, prevPixel);
         prevPixel = pixel;
@@ -64,9 +62,9 @@ void RenderArea::paintEvent(QPaintEvent *event)
     // depending on the step value. Let's force a line drawn from the very last pixel (prevPixel) to
     // the pixel at mIntervalLength
 
-    QPointF point = listOfCurves.compute(listOfCurves.getIntervalLength());
+    QPointF point = listOfCurves->compute(listOfCurves->getIntervalLength());
     QPoint pixel;
-    pixel.setX( point.x() * listOfCurves.getScale() + center.x());
-    pixel.setY( point.y() * listOfCurves.getScale() + center.y());
+    pixel.setX( point.x() * listOfCurves->getScale() + center.x());
+    pixel.setY( point.y() * listOfCurves->getScale() + center.y());
     painter.drawLine(pixel, prevPixel);
 }

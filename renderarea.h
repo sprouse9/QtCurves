@@ -23,7 +23,7 @@ public:
     void setShapeColor( QColor color) { mPen.setColor(color); }    //setter
     QColor shapeColor () const { return mPen.color(); }  // the const makes sure the function will not modify and member class variables
 
-    ParametricCurve listOfCurves;   // should this be public or private?
+    ParametricCurve *listOfCurves;   // should this be public or private?
 
 protected:
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
