@@ -15,16 +15,19 @@ public:
     QStringList getCurveNames();
     void setCurve(int);
 public:
-    enum ShapeType { Asteroid, Cycloid, HuygensCycloid, HypoCycloid, Line, FutureCurve };
-    float getScale() 			{ return curves[currentCurve].mScale; }
+//    enum ShapeType { Asteroid, Cycloid, HuygensCycloid, HypoCycloid, Line, FutureCurve };
+
+    float getScale() 			{ return curves[currentCurve].mScale;  }
+    void  setScale(float scale)	{ curves[currentCurve].mScale = scale; }
+
 	float getIntervalLength() 	{ return curves[currentCurve].mIntervalLength; }
+	void  setIntervalLength(float interval) { curves[currentCurve].mIntervalLength = interval; }
+
 	int   getStepCount() 		{ return curves[currentCurve].mStepCount; }
+	void  setStepCount(int count) { curves[currentCurve].mStepCount = count; }
 
 private:
-    //string 	mCurveName;
-	//float 	mIntervalLength;
-	//float 	mScale;
-	//int 	mStepCount;
+
     int     currentCurve;   // which curve we are working with from [0-5]
 
     QColor  mBackgroundColor;
@@ -42,7 +45,7 @@ private:
             { "Cycloid",          4.0, 6*M_PI, 128, &ParametricCurve::compute_cycloid },
             { "Huygens Cycloid",  4.0, 4*M_PI, 256, &ParametricCurve::compute_huygens },
             { "HypoCycloid",     15.0, 2*M_PI, 256, &ParametricCurve::compute_hypo },
-            { "FutureCurve",     80.0, 2*M_PI, 512, &ParametricCurve::compute_future_curve },
+            { "Rose",     		 80.0, 2*M_PI, 512, &ParametricCurve::compute_future_curve },
             { "Line",            50.0,      1, 128, &ParametricCurve::compute_line }
             };
 

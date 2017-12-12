@@ -61,6 +61,20 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
+      <widget class="QPushButton" name="btnAstroid">
+       <property name="text">
+        <string>Astroid</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCycloid">
+       <property name="text">
+        <string>Cycloid</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="btnHuygens">
        <property name="text">
         <string>Huygens</string>
@@ -77,7 +91,7 @@
      <item>
       <widget class="QPushButton" name="btnFutureCurve">
        <property name="text">
-        <string>FutureCurve</string>
+        <string>Rose</string>
        </property>
       </widget>
      </item>
@@ -85,20 +99,6 @@
       <widget class="QPushButton" name="btnLine">
        <property name="text">
         <string>Line</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnAstroid">
-       <property name="text">
-        <string>Astroid</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnCycloid">
-       <property name="text">
-        <string>Cycloid</string>
        </property>
       </widget>
      </item>
