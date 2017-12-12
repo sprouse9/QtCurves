@@ -8,11 +8,13 @@ RenderArea::RenderArea(QWidget *parent) :
     QWidget(parent),
     mBackgroundColor(0, 0, 255),
     mPen(Qt::white),
-    mShape (Astroid)
+    //mShape (Astroid),
+    listOfCurves(0)
 {
     mPen.setWidth(2);
 
-    on_shape_changed();
+    //on_shape_changed();
+    //listOfCurves.setCurve(0);   // for now default to Asteroid
 }
 
 QSize RenderArea::minimumSizeHint() const
@@ -158,7 +160,8 @@ void RenderArea::paintEvent(QPaintEvent *event)
     painter.drawRect(this->rect());
     QPoint center = this->rect().center();
 
-    QPointF prevPoint = compute(0);
+    //QPointF prevPoint = compute(0);
+    QPointF prevPoint = listOfCurves.compute(0);
     QPoint prevPixel;
     prevPixel.setX( prevPoint.x() * mScale + center.x());
     prevPixel.setY( prevPoint.y() * mScale + center.y());
@@ -166,7 +169,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
     float step = mIntervalLength / mStepCount;
 
     for( float t = 0 ; t < mIntervalLength ; t += step ) {
-        QPointF point = compute(t);
+        QPointF point = listOfCurves.compute(t);
 
         QPoint pixel;
         pixel.setX( point.x() * mScale + center.x());
@@ -180,7 +183,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
     // depending on the step value. Let's force a line drawn from the very last pixel (prevPixel) to
     // the pixel at mIntervalLength
 
-    QPointF point = compute(mIntervalLength);
+    QPointF point = listOfCurves.compute(mIntervalLength);
     QPoint pixel;
     pixel.setX( point.x() * mScale + center.x());
     pixel.setY( point.y() * mScale + center.y());

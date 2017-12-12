@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->ui->spinScale->setValue( this->ui->renderArea->scale() );
-    this->ui->spinInterval->setValue( this->ui->renderArea->intervalLength());
-    this->ui->spinCount->setValue( this->ui->renderArea->stepCount() );
+    this->ui->spinScale->setValue( this->ui->renderArea->listOfCurves.getScale() );
+    this->ui->spinInterval->setValue( this->ui->renderArea->listOfCurves.getIntervalLength());
+    this->ui->spinCount->setValue( this->ui->renderArea->listOfCurves.getStepCount() );
 
     // load the combo box with all possible curves
     this->ui->cboCurveSelect->addItems(this->ui->renderArea->listOfCurves.getCurveNames());
@@ -26,43 +26,50 @@ MainWindow::~MainWindow()
 // Change the background color for the render Area
 void MainWindow::on_btnAstroid_clicked()
 {
+    this->ui->renderArea->listOfCurves.setCurve(0);
+
     //use the ui object that belongs to the main window to access our render area
-    this->ui->renderArea->setShape(RenderArea::Astroid);
+    //this->ui->renderArea->setShape(RenderArea::Astroid);
     this->ui->renderArea->repaint();
     update_ui();
 }
 
 void MainWindow::on_btnCycloid_clicked()
 {
-    this->ui->renderArea->setShape(RenderArea::Cycloid);
+    this->ui->renderArea->listOfCurves.setCurve(1);
+    //this->ui->renderArea->setShape(RenderArea::Cycloid);
     this->ui->renderArea->repaint();
     update_ui();
 }
 
 void MainWindow::on_btnHuygens_clicked()
 {
-    this->ui->renderArea->setShape(RenderArea::HuygensCycloid);
+    this->ui->renderArea->listOfCurves.setCurve(2);
+    //this->ui->renderArea->setShape(RenderArea::HuygensCycloid);
     this->ui->renderArea->repaint();
     update_ui();
 }
 
 void MainWindow::on_btnHypo_clicked()
 {
-    this->ui->renderArea->setShape(RenderArea::HypoCycloid);
+    this->ui->renderArea->listOfCurves.setCurve(3);
+    //this->ui->renderArea->setShape(RenderArea::HypoCycloid);
     this->ui->renderArea->repaint();
     update_ui();
 }
 
 void MainWindow::on_btnFutureCurve_clicked()
 {
-    this->ui->renderArea->setShape(RenderArea::FutureCurve);
+    this->ui->renderArea->listOfCurves.setCurve(4);
+    //this->ui->renderArea->setShape(RenderArea::FutureCurve);
     this->ui->renderArea->repaint();
     update_ui();
 }
 
 void MainWindow::on_btnLine_clicked()
 {
-    this->ui->renderArea->setShape(RenderArea::Line);
+    this->ui->renderArea->listOfCurves.setCurve(5);
+    //this->ui->renderArea->setShape(RenderArea::Line);
     this->ui->renderArea->repaint();
     update_ui();
 }
@@ -74,9 +81,14 @@ void MainWindow::on_spinScale_valueChanged(double scale)
 
 void MainWindow::update_ui()
 {
-    this->ui->spinScale->setValue( this->ui->renderArea->scale() );
-    this->ui->spinInterval->setValue( this->ui->renderArea->intervalLength());
-    this->ui->spinCount->setValue( this->ui->renderArea->stepCount() );
+//    this->ui->spinScale->setValue( this->ui->renderArea->scale() );
+//    this->ui->spinInterval->setValue( this->ui->renderArea->intervalLength());
+//    this->ui->spinCount->setValue( this->ui->renderArea->stepCount() );
+
+    this->ui->spinScale->setValue( this->ui->renderArea->listOfCurves.getScale() );
+    this->ui->spinInterval->setValue( this->ui->renderArea->listOfCurves.getIntervalLength());
+    this->ui->spinCount->setValue( this->ui->renderArea->listOfCurves.getStepCount() );
+
 }
 
 void MainWindow::on_spinInterval_valueChanged(double interval)

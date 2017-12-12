@@ -10,30 +10,32 @@ using namespace std;
 class ParametricCurve
 {
 public:
-    ParametricCurve();
+    ParametricCurve(int defaultCurve);
     QPointF compute(float t);
     QStringList getCurveNames();
     void setCurve(int);
 public:
     enum ShapeType { Asteroid, Cycloid, HuygensCycloid, HypoCycloid, Line, FutureCurve };
+    float getScale() 			{ return curves[currentCurve].mScale; }
+	float getIntervalLength() 	{ return curves[currentCurve].mIntervalLength; }
+	int   getStepCount() 		{ return curves[currentCurve].mStepCount; }
 
 private:
-    string 	mCurveName;
-	float 	mIntervalLength;
-	float 	mScale;
-	int 	mStepCount;
+    //string 	mCurveName;
+	//float 	mIntervalLength;
+	//float 	mScale;
+	//int 	mStepCount;
     int     currentCurve;   // which curve we are working with from [0-5]
 
     QColor  mBackgroundColor;
     QPen    mPen;
-    ShapeType mShape;
 
     struct {
         QString 	mCurveName;
-        float 	mScale;
-        float 	mIntervalLength;
-        int 	mStepCount;
-        QPointF (ParametricCurve::*curvefuncPtr)(float);
+        float 		mScale;
+        float 		mIntervalLength;
+        int 		mStepCount;
+        QPointF 	(ParametricCurve::*curvefuncPtr)(float);
 
     } curves[6] = {
             { "Asteroid",        40.0, 2*M_PI, 256, &ParametricCurve::compute_astroid },
